@@ -40,8 +40,14 @@ function downloadImageByURL(url, filePath) {
   .pipe(fs.createWriteStream(filePath));
 }
 
-getRepoContributors(process.argv[2], process.argv[3], function(error, result) {
-  if (error) {
+const arg1 = process.argv[2];
+const arg2 = process.argv[3];
+
+getRepoContributors(arg1, arg2, function(error, result) {
+  if (arg1 === undefined) {
+    console.log('Error: You must enter the repo owner and repo name into the command line');
+    return error;
+  } else if (error) {
     console.log('Error:', error);
     return error;
   } else {
