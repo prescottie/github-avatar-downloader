@@ -25,7 +25,7 @@ function getRepoContributors(repoOwner, repoName, cb) {
     const data = JSON.parse(body);
 
     if (data.message) {
-      cb(data)
+      cb(data);
       return;
     }
     cb(undefined, data);
